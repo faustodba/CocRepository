@@ -85,7 +85,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		if $iVSDelay > 0 then
 			If _Sleep(1000 * $iVSDelay) Then Return
 		endif
-		
+
 		GetResources() ;Reads Resource Values
 		If $Restart = True Then Return ; exit func
 		If $iChkAttackNow = 1 Then
@@ -137,7 +137,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					Local $resultHere = DllCall($LibDir & "\CGBfunctions.dll", "str", "CheckConditionForWeakBase", "ptr", $hBitmapFirst ,"int",($iWBMortar+1),"int",($iWBWizTower+1),"int",10)
 					if $resultHere[0] = "Y" then
 						SetLog(_PadStringCenter(" Weak Base Found! ", 50, "~"), $COLOR_GREEN)
-						ExitLoop	
+						ExitLoop
 					else
 						If $bBtnAttackNowPressed = True then ExitLoop
 						SetLog(_PadStringCenter(" Not a Weak Base, Skipping ", 50, "~"), $COLOR_ORANGE)
@@ -192,6 +192,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 	If GUICtrlRead($chkAlertSearch) = $GUI_CHECKED Then
 		TrayTip("Match Found!", "Gold: " & $searchGold & "; Elixir: " & $searchElixir & "; Dark: " & $searchDark & "; Trophy: " & $searchTrophy, "", 0)
+		_PushBullet("Match Found!", " [G]: " & $searchGold & " [E]: " & $searchElixir & " [D]: " & $searchDark & "  [T]: " & $TrophyCount)
 		If FileExists(@WindowsDir & "\media\Festival\Windows Exclamation.wav") Then
 			SoundPlay(@WindowsDir & "\media\Festival\Windows Exclamation.wav", 1)
 		ElseIf FileExists(@WindowsDir & "\media\Windows Exclamation.wav") Then

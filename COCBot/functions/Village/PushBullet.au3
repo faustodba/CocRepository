@@ -38,7 +38,7 @@ Func _PushBullet($pTitle = "", $pMessage = "")
     $oHTTP.Send($pPush)
 	#ce
 	_PushGoogleJson($pTitle, $pMessage)
-	_PushGoogleJsonApi($pTitle, $pMessage)
+	_PushGoogleApi($pTitle, $pMessage)
 EndFunc   ;==>_PushBullet
 
 Func _Push($pTitle, $pMessage)
@@ -55,7 +55,7 @@ Func _Push($pTitle, $pMessage)
     $oHTTP.Send($pPush)
 	#ce
 	_PushGoogleJson($pTitle, $pMessage)
-	_PushGoogleJsonApi($pTitle, $pMessage)
+	_PushGoogleApi($pTitle, $pMessage)
 EndFunc   ;==>_Push
 
 ; _PushBullet()
@@ -117,7 +117,9 @@ Func _PushGoogleJson($pTitle, $pMessage)
    SetLog('title ' &$pTitle)
 EndFunc
 
-Func _PushGoogleJsonApi($pTitle, $pMessage)
+Func _PushGoogleApi($pTitle, $pMessage)
+   Local $N="N-"
+   $pTitle=$N&$pTitle
    Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
    Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
 
