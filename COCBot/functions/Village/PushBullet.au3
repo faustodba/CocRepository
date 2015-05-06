@@ -17,6 +17,7 @@
 #include <Array.au3>
 #include <String.au3>
 
+
 Func _PushBullet($pTitle = "", $pMessage = "")
     #cs $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
     $access_token = $PushToken
@@ -61,6 +62,9 @@ EndFunc   ;==>_Push
 ;_Push("CGB Notifications", "Message")
 
 Func _PushGoogle($pTitle, $pMessage)
+   Local $N="N-"
+   $pTitle=$N&$pTitle
+
    Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
    Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
 
@@ -86,6 +90,9 @@ Func _PushGoogle($pTitle, $pMessage)
 EndFunc
 
 Func _PushGoogleJson($pTitle, $pMessage)
+   Local $N="N-"
+   $pTitle=$N&$pTitle
+
    Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
    Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
 
