@@ -37,6 +37,9 @@ Func _PushBullet($pTitle = "", $pMessage = "")
     Local $pPush = '{"type": "note", "title": "' & $pTitle & '", "body": "' & $pMessage & '"}'
     $oHTTP.Send($pPush)
 	#ce
+    $pTitle=StringReplace($pTitle,"My Village:","Village Report")
+    $pTitle=StringReplace($pTitle,"Last Attack:","Last Raid")
+
 	_PushGoogleJson($pTitle, $pMessage)
 	_PushGoogleApi($pTitle, $pMessage)
 EndFunc   ;==>_PushBullet
@@ -54,6 +57,9 @@ Func _Push($pTitle, $pMessage)
     ;Local $pPush = '{"type": "note", "title": "' & $pTitle & '", "body": "' & $pMessage & '","device_iden": "' & $device_iden[$pDevice - 1] & '"}'
     $oHTTP.Send($pPush)
 	#ce
+    $pTitle=StringReplace($pTitle,"My Village:","Village Report")
+    $pTitle=StringReplace($pTitle,"Last Attack:","Last Raid")
+
 	_PushGoogleJson($pTitle, $pMessage)
 	_PushGoogleApi($pTitle, $pMessage)
 EndFunc   ;==>_Push
@@ -62,8 +68,8 @@ EndFunc   ;==>_Push
 ;_Push("CGB Notifications", "Message")
 
 Func _PushGoogle($pTitle, $pMessage)
-   Local $N="N-"
-   $pTitle=$N&$pTitle
+   ;Local $N="N-"
+   ;$pTitle=$N&$pTitle
 
    Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
    Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
@@ -90,8 +96,10 @@ Func _PushGoogle($pTitle, $pMessage)
 EndFunc
 
 Func _PushGoogleJson($pTitle, $pMessage)
-   Local $N="N-"
-   $pTitle=$N&$pTitle
+   ;Local $N="N-"
+   ;$pTitle=$N&$pTitle
+
+   $pTitle=StringReplace($pTitle,"My Village:","")
 
    Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
    Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
