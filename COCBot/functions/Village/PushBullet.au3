@@ -94,7 +94,7 @@ Func _PushGoogleJson($pTitle, $pMessage)
    $pPush&='}'
    $objHTTP.send ($pPush)
    ;SetLog('Send _PushGoogleJson')
-   SetLog('message ' &$pMessage)
+   SetLog('$pPush ' &$pPush)
    ;SetLog('title ' &$pTitle)
 EndFunc
 
@@ -121,7 +121,7 @@ Func _PushGoogleApi($pTitle, $pMessage)
    $objHTTP.send ($pPush)
 
    ;SetLog('Send _PushGoogleJsonApi')
-   SetLog('message ' &$pMessage)
+   SetLog('$pPush ' &$pPush)
    ;SetLog('title ' &$pTitle)
 
    ;Sleep(3000)
