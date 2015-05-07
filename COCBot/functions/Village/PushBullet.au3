@@ -67,33 +67,6 @@ EndFunc   ;==>_Push
 ; _PushBullet()
 ;_Push("CGB Notifications", "Message")
 
-Func _PushGoogle($pTitle, $pMessage)
-   ;Local $N="N-"
-   ;$pTitle=$N&$pTitle
-
-   Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
-   Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
-
-   $objHTTP = ObjCreate("WinHttp.WinHttpRequest.5.1")
-   ; Set up to post to the server
-   $objHTTP.open ("post", "https://android.googleapis.com/gcm/send", False)
-   $objHTTP.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
-   $objHTTP.setRequestHeader('Authorization', 'key=AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo')
-   $objHTTP.setRequestHeader('Sender', 'id=296637719773')
-   Local $pPush="collapse_key=score_update&time_to_live=108&data.message="&$pMessage&"&data.title="&$pTitle&"&registration_id=" & $strId & ""
-   $objHTTP.send ($pPush)
-
-   Local $request=$objHTTP.ResponseText
-
-   Local $oStatusCode = $objHTTP.status
-   If $oStatusCode == 200 then
-	  SetLog("Send message "&$pPush)
-   else
-	  SetLog("Send message Error "&$request)
-   EndIf
-
-
-EndFunc
 
 Func _PushGoogleJson($pTitle, $pMessage)
    ;Local $N="N-"
@@ -120,14 +93,12 @@ Func _PushGoogleJson($pTitle, $pMessage)
    $pPush&='"to":"'&$strId&'"' ;errore nella documentazione di google non usare registration_id
    $pPush&='}'
    $objHTTP.send ($pPush)
-   SetLog('Send _PushGoogleJson')
-   SetLog('message ' &$pMessage)
-   SetLog('title ' &$pTitle)
+   ;SetLog('Send _PushGoogleJson')
+   ;SetLog('message ' &$pMessage)
+   ;SetLog('title ' &$pTitle)
 EndFunc
 
 Func _PushGoogleApi($pTitle, $pMessage)
-   Local $N="N-"
-   $pTitle=$N&$pTitle
    Local $strId = "APA91bEBcTUDIgNkulhnwuVRpEfFX469EnITYsOqDRFNPh4Ok7wdCreUBxusTWXeZjeuDUo2gBmWqgv0juMHeT2vJYH2EAsM-vfsbHGnwTHPpa1HhT_C0E4Y6OTTgZmckbDJ0DB4hhiPFQNnMfHGBMY8AhQ03pDurA";
    Local $applicationID = "AIzaSyBpqjGqIOUx2zJeEkR3qX-FuxK0xJQ6nmo";
 
@@ -149,11 +120,11 @@ Func _PushGoogleApi($pTitle, $pMessage)
    $pPush&='}'
    $objHTTP.send ($pPush)
 
-   SetLog('Send _PushGoogleJsonApi')
-   SetLog('message ' &$pMessage)
-   SetLog('title ' &$pTitle)
+   ;SetLog('Send _PushGoogleJsonApi')
+   ;SetLog('message ' &$pMessage)
+   ;SetLog('title ' &$pTitle)
 
-   Sleep(3000)
+   ;Sleep(3000)
    Local $request=$objHTTP.ResponseText
    Local $oStatusCode = $objHTTP.status
    If $oStatusCode == 200 then
