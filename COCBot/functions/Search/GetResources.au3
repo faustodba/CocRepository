@@ -5,7 +5,7 @@ Func GetResources() ;Reads resources
 	Local $i = 0
 	;_CaptureRegion()
 	If _Sleep(500) Then Return
-	$searchGold = "" 
+	$searchGold = ""
 	While $searchGold = "" or $searchGold = $searchGold2; Loops until gold is readable
 		If _Sleep(500) Then Return
 		$searchGold = getGold(51, 66)
@@ -16,6 +16,7 @@ Func GetResources() ;Reads resources
 		$i += 1
 		If $i >= 40 Then ; wait max 20 sec then Restart Bot
 			SetLog("Cannot locate Next button, Restarting Bot", $COLOR_RED)
+			_PushBullet("Disconnected","Cannot locate Next button, Restarting Bot")
 			$Is_ClientSyncError = True
 			$iStuck = 0
 			checkMainScreen()
@@ -25,7 +26,7 @@ Func GetResources() ;Reads resources
 	WEnd
 
 	$searchElixir = getElixir(51, 66 + 29)
-	
+
 	$searchTrophy = getTrophy(51, 66 + 90)
 
 	If $searchGold = $searchGold2 Then $iStuck += 1
@@ -34,6 +35,7 @@ Func GetResources() ;Reads resources
 	$searchGold2 = $searchGold
 	If $iStuck >= 5 Then
 		SetLog("Cannot locate Next button, Restarting Bot", $COLOR_RED)
+		_PushBullet("Disconnected","Cannot locate Next button, Restarting Bot")
 		$Is_ClientSyncError = True
 		$iStuck = 0
 		checkMainScreen()
